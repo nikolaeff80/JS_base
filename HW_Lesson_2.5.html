@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+      <script>
+        "use strict";
+        // Задание 5
+
+        /**
+         * Функция вычитания.
+         * @param {number} a
+         * @param {number} b
+         * @returns {number}
+         */
+        function difference(a, b) {
+            return a - b;
+        }
+
+        /**
+         * Функция сложения.
+         * @param {number} a
+         * @param {number} b
+         * @returns {number}
+         */
+        function amount(a, b) {
+            return a + b;
+        }
+
+        /**
+         * Функция умножения.
+         * @param {number} a
+         * @param {number} b
+         * @returns {number}
+         */
+        function multiplication(a, b) {
+            return a * b;
+        }
+
+        /**
+         * Функция деления.
+         * @param {number} a
+         * @param {number} b
+         * @returns {number}
+         */
+        function division(a, b) {
+            return a / b;
+        }
+          
+        /**
+         * Функция получает два числа и осуществляет над ними математическу операцию.
+         * @param {number} arg1
+         * @param {number} arg2
+         * @param {string} operation может быть "+", "-", "/", "*".
+         * @throws {Error} перехват исключений и ошибок
+         * @returns {number}
+         */
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case "+":
+                    return amount(arg1, arg2);
+                case "-":
+                    return difference(arg1, arg2);
+                case "/":
+                    return division(arg1, arg2);
+                case "*":
+                    return multiplication(arg1, arg2);
+                default:
+                    throw new Error("Операция " + operation + " неизвестна");
+            }
+        }
+
+        console.log(mathOperation(9, 12, "-"));
+        console.log(mathOperation(9, 12, "+"));
+        console.log(mathOperation(9, 12, "*"));
+        console.log(mathOperation(9, 12, "/"));
+        console.log(mathOperation(9, 12, "jakdeurfveaurgv"));
+    </script>
+    
+</body>
+</html>
