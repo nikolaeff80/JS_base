@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(3, 270px);
+            grid-gap: 20px;
+        }
+
+        .product {
+            margin-top: 50px;
+            width: 270px;
+
+        }
+
+        img {
+            display: inline-block;
+        }
+
+        button {
+            margin-top: 50px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product">
+        <div class="productName">Product 1</div>
+        <img src="https://peyupg.db.files.1drv.com/y4mnCKsrIWLa6tepOwF4SDVKMQEA6rYuSu7yYKE8jazpREjcjVgp568ns-rr-aaow87B6aMeoAQttHYYN0kYJ2xDAaqpHCmPHIE0r2X7UaLRbcJF_WyUM-aGzhTzcuOU-5Mqz2jIcBnHKriOnsAoFspmtT7ZSD3g4nzFfCDFjB4AZuAmwJrnZEXZQEC91Yy9NgpSSTw4iZgz0zaCFbWQUQfwA?width=270&height=270&cropmode=none"
+            alt="img_product1">
+        <button>More...</button>
+    </div>
+    <div class="product">
+        <div class="productName">Product 2</div>
+        <img src="https://wwngpq.db.files.1drv.com/y4m1LwiPlk4sF4Oxy9Ff0RAorW0wSbuVCwbIISK_07UqtX-c6wDYGiAELi3Jiivaash7iIleotxIzsCKbU7zrBin0XXlycjqi3g5nqQYQP-Gvic4qrF3r9uENbOrvlkmqVES8ThJXsVwRsqzSFu-Ru2e5XLWz-tB6gsHtxRpK2ZkwNAoEDBwWqUEKA72I11LyOjxWuIV6srrPixhH2Zik3oKg?width=270&height=270&cropmode=none"
+            alt="img_product2">
+        <button>More...</button>
+    </div>
+    <div class="product">
+        <div class="productName">Product 3</div>
+        <img src="https://lge84q.db.files.1drv.com/y4mT9cyAqAYFEPri2iB3gkBhhVn2GiBeFx6xSdEeF8U0eEO75gwZXALWA872-vgbbssgW-MCgtZYqDnfG3e47DomCQxLwc50AM4R5x3riW-qDPibysI8qnIYZUGfGxSV15JBZ3AmhiiBFRNknDj7BnjFc4L0V1Q9qee-3HksD75KWx_-snTbSu2CQcKTSF7B6ulqBe-w2tinj1Bv-uBFLDv6Q?width=270&height=270&cropmode=none"
+            alt="img_product3">
+        <button>More...</button>
+    </div>
+
+    <script>
+        "use strict"
+        let buttons = document.querySelectorAll('button');
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                handleClick(event);
+            })
+        });
+
+        /**
+         * Функция перехватывает клик по кнопке и вызывает
+         * функции для показа или скрытия текста о товаре.
+         * @param {MouseEvent} clickButtonEvent 
+         */
+        function handleClick(clickButtonEvent) {
+            let productCardNode = clickButtonEvent.target.parentNode;
+
+            let productCard = {
+                button: productCardNode.querySelector('button'),
+                wrap: productCardNode,
+                productName: productCardNode.querySelector('.productName'),
+                img: productCardNode.querySelector('img'),
+            };
+
+            let textButton = productCard.button.innerText;
+            if (textButton === 'More...') {
+                showButtonText(productCard);
+            } else if (textButton === 'Cancel') {
+                hideButtonText(productCard);
+            };
+        }
+
+        /**
+         * Функция показывает описание товара.
+         * @param {Object} productCard 
+         * @param {HTMLButtonElement} productCard.button
+         * @param {HTMLImageElement} productCard.img
+         * @param {HTMLDivElement} productCard.wrap
+         * @param {HTMLDivElement} productCard.productName
+          
+         */
+         function showButtonText(productCard) {
+            productCard.img.style.display = 'none';
+            let text = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.';
+            productCard.productName.insertAdjacentHTML('afterend', `<div class="desccription">${text}</div>`);
+            productCard.button.innerText = 'Cancel';
+        }
+        /**
+         * Функция скрывает описание товара.
+         * @param {Object} productCard 
+         * @param {HTMLButtonElement} productCard.button
+         * @param {HTMLImageElement} productCard.img
+         * @param {HTMLDivElement} productCard.wrap
+         * @param {HTMLDivElement} productCard.productName
+         */
+        function hideButtonText(productCard) {
+            productCard.img.style.display = 'block';
+            productCard.wrap.querySelector('.desccription').remove();
+            productCard.button.innerText = 'More...';
+        }
+
+    </script>
+</body>
+
+</html>

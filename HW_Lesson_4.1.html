@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Функция преобразует число в объект.
+         * @param {num} Число в диапазоне от 0 до 999
+         * @returns Возвращается либо объект с разрядами либо пустой объект.
+         */
+        num = parseInt(prompt("Введите целое число в диапазоне от 0 до 999: "))
+        function converseNumber(num) {
+            if (!Number.isInteger(num) || num < 0 || num > 999) {
+                console.log('Значение должно быть целым числом в диапазоне от 0 до 999.');
+                return {};
+            }
+
+            else return {
+                units: num % 10,
+                tens: Math.floor(num / 10) % 10,
+                hundreds: Math.floor(num / 100),
+            };
+        }
+        console.log(converseNumber(num));
+    </script>
+</body>
+
+</html>
